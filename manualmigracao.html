@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Manual de Migração para o Novo Tenant Sumeryan - Instruções passo a passo">
+  <title>Manual de Migração para o Novo Tenant Sumeryan</title>
+  <style>
+    :root {
+      --primary-color: #005a9e;
+      --secondary-color: #f2f2f2;
+      --text-color: #333;
+      --accent-color: #ff4d4d;
+      --border-radius: 4px;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    header {
+      margin-bottom: 40px;
+      text-align: center;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 20px;
+    }
+    
+    h1, h2, h3 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    h2 {
+      font-size: 1.6rem;
+      border-left: 5px solid var(--primary-color);
+      padding-left: 10px;
+    }
+    
+    p {
+      margin-bottom: 15px;
+    }
+    
+    .section {
+      margin-bottom: 40px;
+      background-color: white;
+      padding: 20px;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .step {
+      margin: 15px 0;
+      padding: 15px;
+      background: var(--secondary-color);
+      border-left: 4px solid var(--primary-color);
+      border-radius: var(--border-radius);
+    }
+    
+    .important {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+    
+    .image {
+      max-width: 100%;
+      height: auto;
+      margin: 15px 0;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+      color: #003d6b;
+    }
+    
+    ul, ol {
+      padding-left: 25px;
+      margin-bottom: 15px;
+    }
+    
+    li {
+      margin-bottom: 5px;
+    }
+    
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+      color: #666;
+      font-size: 0.9rem;
+    }
+    
+    /* Responsividade */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      h2 {
+        font-size: 1.4rem;
+      }
+      
+      .section {
+        padding: 15px;
+      }
+    }
+    
+    /* Barra de navegação para facilitar acesso às seções */
+    .navigation {
+      position: sticky;
+      top: 0;
+      background-color: #fff;
+      padding: 10px 0;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 100;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    .nav-item {
+      padding: 5px 10px;
+      background-color: var(--secondary-color);
+      border-radius: var(--border-radius);
+      font-size: 0.9rem;
+    }
+    
+    .checklist {
+      background-color: #e6f7ff;
+      padding: 15px;
+      border-radius: var(--border-radius);
+      margin: 20px 0;
+    }
+    
+    .checklist h3 {
+      margin-bottom: 10px;
+    }
+    
+    .checklist-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    
+    .checklist-item input {
+      margin-right: 10px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Manual de Migração para o Novo Tenant Sumeryan</h1>
+    <p>Este manual foi elaborado para orientar todos os usuários na migração do tenant M&B para o tenant Sumeryan. Siga as instruções para uma transição segura e tranquila.</p>
+  </header>
+
+  <nav class="navigation" id="navigation">
+    <a href="#tenant" class="nav-item">O que é um Tenant</a>
+    <a href="#migracao" class="nav-item">Por que Migrar</a>
+    <a href="#prazos" class="nav-item">Prazos</a>
+    <a href="#authenticator" class="nav-item">Authenticator</a>
+    <a href="#outlook" class="nav-item">Outlook</a>
+    <a href="#onedrive" class="nav-item">OneDrive</a>
+    <a href="#faq" class="nav-item">FAQ</a>
+  </nav>
+
+  <section class="checklist">
+    <h3>Checklist de Migração</h3>
+    <div class="checklist-item">
+      <input type="checkbox" id="check1">
+      <label for="check1">Receber e-mail com senha temporária</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="check2">
+      <label for="check2">Instalar Microsoft Authenticator</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="check3">
+      <label for="check3">Realizar primeiro acesso até 08/04/2025</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="check4">
+      <label for="check4">Reconfigurar Outlook (se aplicável)</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="check5">
+      <label for="check5">Verificar arquivos no OneDrive</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="check6">
+      <label for="check6">Revisar regras de e-mail</label>
+    </div>
+  </section>
+
+  <section class="section" id="tenant">
+    <h2>1. O que é um Tenant?</h2>
+    <p>Um <strong>tenant</strong> é um ambiente dedicado na nuvem onde são gerenciados os recursos e serviços para a organização. Estamos migrando do tenant M&B para o novo tenant Sumeryan.</p>
+    <p>Para mais informações sobre tenants, consulte a <a href="https://support.microsoft.com/" target="_blank">documentação oficial da Microsoft</a>.</p>
+  </section>
+
+  <section class="section" id="migracao">
+    <h2>2. Por que a Migração?</h2>
+    <p>A migração ocorre devido à nova parceria da Sumeryan com a Microsoft, proporcionando acesso a um pacote mais completo de soluções e maior segurança.</p>
+    <p>Benefícios da migração:</p>
+    <ul>
+      <li>Acesso a recursos avançados do Microsoft 365</li>
+      <li>Aumento da segurança e conformidade</li>
+      <li>Melhor integração entre as ferramentas utilizadas</li>
+      <li>Suporte técnico aprimorado</li>
+    </ul>
+  </section>
+
+  <section class="section" id="email">
+    <h2>3. Migração de E-mails Concluída</h2>
+    <p>O processo de migração dos e-mails já foi concluído e todos os e-mails estão sendo redirecionados para o novo tenant.</p>
+    <p>Seus e-mails antigos, contatos e calendários foram preservados durante o processo de migração.</p>
+  </section>
+
+  <section class="section" id="autenticacao">
+    <h2>4. Autenticação em Dois Fatores</h2>
+    <p>No novo tenant, será <strong>obrigatório</strong> utilizar a autenticação em dois fatores. Essa medida de segurança é indispensável para proteger suas informações corporativas.</p>
+    <p>A autenticação em dois fatores adiciona uma camada extra de segurança usando:</p>
+    <ul>
+      <li>Algo que você sabe (sua senha)</li>
+      <li>Algo que você tem (seu dispositivo móvel com o Microsoft Authenticator)</li>
+    </ul>
+    <p>Saiba mais em: <a href="https://support.microsoft.com/en-us/topic/use-microsoft-authenticator-with-microsoft-365-1412611f-ad8d-43ab-807c-7965e5155411" target="_blank">Guia Oficial Microsoft Authenticator</a></p>
+  </section>
+
+  <section class="section" id="authenticator">
+    <h2>5. Instalação do Microsoft Authenticator: Passo a Passo</h2>
+    <div class="step">
+      <strong>Passo 1:</strong> Baixe o aplicativo:
+      <ul>
+        <li><a href="https://play.google.com/store/apps/details?hl=en_US&id=com.azure.authenticator" target="_blank">Microsoft Authenticator para Android</a></li>
+        <li><a href="https://apps.apple.com/us/app/microsoft-authenticator/id983156458" target="_blank">Microsoft Authenticator para iOS</a></li>
+      </ul>
+    </div>
+    <div class="step">
+      <strong>Passo 2:</strong> Abra o app e toque em <em>Adicionar Conta</em>, selecionando <em>Conta Corporativa ou Escolar</em>. Permita o acesso à câmera para escanear o QR Code.
+    </div>
+    <div class="step">
+      <strong>Passo 3:</strong> No computador, localize o e-mail com o título <strong>"Senha para novo tenant M365"</strong>, que contém a senha temporária a ser alterada no primeiro acesso.
+    </div>
+    <div class="step">
+      <strong>Passo 4:</strong> Acesse <a href="https://portal.office.com" target="_blank">portal.office.com</a> e utilize seu e-mail (<strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>) e a senha temporária recebida.
+    </div>
+    <div class="step">
+      <strong>Passo 5:</strong> Quando solicitado, escaneie o QR Code exibido na tela para configurar o Authenticator no app.
+    </div>
+    <div class="step">
+      <strong>Passo 6:</strong> Insira o código de verificação gerado pelo aplicativo para confirmar a configuração.
+    </div>
+    <div class="step">
+      <strong>Passo 7:</strong> Defina uma nova senha forte quando solicitado.
+    </div>
+    <p>Para obter mais detalhes sobre como configurar o Microsoft Authenticator, consulte o <a href="https://support.microsoft.com/en-us/account-billing/download-microsoft-authenticator-351498fc-850a-45da-b7b6-27e523b8702a" target="_blank">guia oficial da Microsoft</a>.</p>
+  </section>
+
+  <section class="section" id="comunicacao">
+    <h2>6. Comunicação Interna</h2>
+    <p>Informe seus colegas sobre a migração para que todos possam seguir as orientações e realizar os ajustes necessários.</p>
+    <p>Durante o período de transição, certifique-se de verificar tanto a caixa de entrada antiga quanto a nova para não perder comunicações importantes.</p>
+  </section>
+
+  <section class="section" id="dominio">
+    <h2>7. Domínio Temporário</h2>
+    <p>Durante o processo, os e-mails foram enviados com o domínio <strong>@meb.email</strong>.</p>
+    <p>Após a conclusão da migração, você voltará a utilizar seu domínio original (<strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>).</p>
+  </section>
+
+  <section class="section" id="prazos">
+    <h2>8. Prazos Importantes</h2>
+    <ul>
+      <li class="important">Até 08/04/2025:</li>
+      <ul>
+        <li>Realize o primeiro acesso no novo e-mail.</li>
+        <li>Instale e configure o app Microsoft Authenticator.</li>
+        <li>Altere sua senha temporária para uma senha definitiva.</li>
+      </ul>
+      <li class="important">A partir de 09/04/2025:</li>
+      <ul>
+        <li>Acesse o e-mail via <a href="https://www.office.com/" target="_blank">portal do Microsoft Office 365</a> usando os logins <strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>.</li>
+        <li>Será solicitada a senha definitiva que você configurou (não mais a senha temporária do domínio @meb.email).</li>
+        <li>O acesso através do domínio temporário @meb.email será desativado.</li>
+      </ul>
+    </ul>
+  </section>
+
+  <section class="section" id="outlook">
+    <h2>9. Reconfiguração do Outlook (Uso Local)</h2>
+    <div class="step">
+      <strong>Passo 1:</strong> Abra o Outlook e vá em <em>Arquivo > Configurações de Conta > Configurações de Conta</em>. Selecione a conta antiga e clique em <strong>Remover</strong>.
+    </div>
+    <div class="step">
+      <strong>Passo 2:</strong> Clique em <em>Novo</em> para adicionar a nova conta. Insira seu e-mail (<strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>) e a senha (a que você definiu no primeiro acesso).
+    </div>
+    <div class="step">
+      <strong>Passo 3:</strong> Siga o assistente para concluir a configuração e aguarde a sincronização dos dados.
+    </div>
+    <div class="step">
+      <strong>Passo 4:</strong> Verifique se a sincronização foi concluída com sucesso, confirmando o acesso às suas pastas e e-mails.
+    </div>
+    <p>Mais informações em: <a href="https://support.microsoft.com/en-us/office/change-or-update-email-account-settings-in-outlook-for-windows-560a9065-3c3a-4ec5-a24f-cdb9a8d622a2" target="_blank">Configurar Conta no Outlook</a></p>
+  </section>
+
+  <section class="section" id="senha">
+    <h2>10. Suporte para Alteração de Senha</h2>
+    <p>Se não conseguir alterar a senha no primeiro acesso, a partir de <strong>09/04/2025</strong> contate o suporte de TI para resetar sua senha, possibilitando o acesso com os domínios corretos.</p>
+    <p>Contatos do suporte:</p>
+    <ul>
+      <li>E-mail: <a href="mailto:suporte@sumeryan.com">suporte@sumeryan.com</a></li>
+      <li>Telefone/WhatsApp - Primeiro contato: <a href="https://wa.me/5519971474776" target="_blank">+55 19 97147-4776</a> - João Vitor - S Info</li>
+      <li>Telefone/WhatsApp - Segundo contato: <a href="https://wa.me/5541991930141" target="_blank">+55 41 99193-0141</a> - Igor - Sumeryan</li>
+      <li>Horário de atendimento: Segunda a sexta, das 8h às 18h</li>
+    </ul>
+  </section>
+
+  <section class="section" id="onedrive">
+    <h2>11. Migração dos Arquivos do OneDrive</h2>
+    <p>Todos os seus arquivos do OneDrive foram migrados para o novo tenant. Verifique a disponibilidade dos documentos e, se necessário, entre em contato com o suporte.</p>
+    <div class="step">
+      <strong>Como verificar seus arquivos:</strong>
+      <ol>
+        <li>Acesse <a href="https://www.office.com/" target="_blank">www.office.com</a> com sua nova conta</li>
+        <li>Clique no ícone do OneDrive no menu lateral esquerdo</li>
+        <li>Verifique se todos os seus arquivos importantes estão disponíveis</li>
+        <li>Teste a abertura de alguns documentos para confirmar que estão funcionando corretamente</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="regras">
+    <h2>12. Revisão das Regras da Caixa de Correio</h2>
+    <p>Revise as regras e configurações (filtros, encaminhamentos, etc.) da sua caixa de correio para garantir que funcionem conforme o esperado.</p>
+    <div class="step">
+      <strong>Como revisar suas regras:</strong>
+      <ol>
+        <li>Acesse seu Outlook Web em <a href="https://outlook.office.com" target="_blank">outlook.office.com</a></li>
+        <li>Clique no ícone de Configurações (engrenagem) no canto superior direito</li>
+        <li>Pesquise por "Regras" ou role até encontrar esta opção</li>
+        <li>Verifique se suas regras foram migradas corretamente</li>
+        <li>Recrie as regras ausentes, se necessário</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="informacoes">
+    <h2>13. Informações Adicionais</h2>
+    <ul>
+      <li>Vídeos e tutoriais interativos serão disponibilizados para facilitar a adaptação ao novo ambiente.</li>
+      <li>Uma seção de FAQ estará disponível no portal da empresa para esclarecer dúvidas comuns.</li>
+      <li>Em caso de dificuldades, contate o suporte de TI.</li>
+    </ul>
+    <p>Acompanhe os comunicados da empresa para informações atualizadas sobre o processo de migração.</p>
+  </section>
+
+  <section class="section" id="faq">
+    <h2>14. Perguntas Frequentes (FAQ)</h2>
+    <div class="step">
+      <strong>Preciso instalar novamente os aplicativos do Office em meu computador?</strong>
+      <p>Não é necessário reinstalar os aplicativos. Apenas faça login com suas novas credenciais quando solicitado.</p>
+    </div>
+    <div class="step">
+      <strong>Perderei e-mails durante a migração?</strong>
+      <p>Não. Todos os e-mails já foram migrados para o novo ambiente. Em caso de discrepâncias, entre em contato com o suporte.</p>
+    </div>
+    <div class="step">
+      <strong>O que acontece se eu não completar a migração até 08/04/2025?</strong>
+      <p>Após essa data, o acesso pelo domínio temporário será desativado e você precisará contatar o suporte para assistência.</p>
+    </div>
+    <div class="step">
+      <strong>Posso continuar usando o aplicativo Outlook em meu celular?</strong>
+      <p>Sim, mas será necessário reconfigurar o aplicativo com suas novas credenciais.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Sumeryan. Todos os direitos reservados.</p>
+    <p>Última atualização: 06/04/2025</p>
+    <p>Em caso de dúvidas, entre em contato com o suporte: <a href="mailto:suporte@sumeryan.com">suporte@sumeryan.com</a></p>
+  </footer>
+
+  <script>
+    // Script para marcar os itens do checklist como concluídos
+    document.querySelectorAll('.checklist-item input').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          this.parentElement.style.textDecoration = 'line-through';
+          this.parentElement.style.opacity = '0.7';
+        } else {
+          this.parentElement.style.textDecoration = 'none';
+          this.parentElement.style.opacity = '1';
+        }
+        
+        // Salvar estado do checkbox no localStorage
+        localStorage.setItem(this.id, this.checked);
+      });
+      
+      // Recuperar estado salvo
+      const savedState = localStorage.getItem(checkbox.id);
+      if (savedState === 'true') {
+        checkbox.checked = true;
+        checkbox.parentElement.style.textDecoration = 'line-through';
+        checkbox.parentElement.style.opacity = '0.7';
+      }
+    });
+  </script>
+
+</body>
+</html>
