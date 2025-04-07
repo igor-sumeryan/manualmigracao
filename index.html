@@ -178,6 +178,10 @@
   <header>
     <h1>Manual de Migração para o Novo Tenant Sumeryan</h1>
     <p>Este manual foi elaborado para orientar todos os usuários na migração do tenant M&B para o tenant Sumeryan. Siga as instruções para uma transição segura e tranquila.</p>
+    <div style="background-color: #ffebee; border-left: 4px solid #f44336; padding: 15px; margin-top: 15px; border-radius: 4px;">
+      <p style="margin: 0; font-weight: bold;">ATENÇÃO:</p>
+      <p style="margin-top: 5px;">Para realizar o primeiro acesso e alterar sua senha, você deve usar seu endereço de e-mail temporário <strong>@meb.email</strong>. Somente após completar a configuração inicial, você voltará a usar seu e-mail habitual (@mebconsultoria.com.br ou @merakipm.com.br).</p>
+    </div>
   </header>
 
   <nav class="navigation" id="navigation">
@@ -194,7 +198,7 @@
     <h3>Checklist de Migração</h3>
     <div class="checklist-item">
       <input type="checkbox" id="check1">
-      <label for="check1">Receber e-mail com senha temporária</label>
+      <label for="check1">Receber e-mail com senha temporária (contém seu login @meb.email na primeira linha e senha na segunda linha)</label>
     </div>
     <div class="checklist-item">
       <input type="checkbox" id="check2">
@@ -202,19 +206,23 @@
     </div>
     <div class="checklist-item">
       <input type="checkbox" id="check3">
-      <label for="check3">Realizar primeiro acesso até 08/04/2025</label>
+      <label for="check3">Realizar primeiro acesso com o endereço @meb.email até 08/04/2025</label>
     </div>
     <div class="checklist-item">
       <input type="checkbox" id="check4">
-      <label for="check4">Reconfigurar Outlook (se aplicável)</label>
+      <label for="check4">Alterar a senha temporária para uma senha definitiva</label>
     </div>
     <div class="checklist-item">
       <input type="checkbox" id="check5">
-      <label for="check5">Verificar arquivos no OneDrive</label>
+      <label for="check5">Reconfigurar Outlook (se aplicável)</label>
     </div>
     <div class="checklist-item">
       <input type="checkbox" id="check6">
-      <label for="check6">Revisar regras de e-mail</label>
+      <label for="check6">Verificar arquivos no OneDrive</label>
+    </div>
+    <div class="checklist-item">
+      <input type="checkbox" id="check7">
+      <label for="check7">Revisar regras de e-mail</label>
     </div>
   </section>
 
@@ -266,10 +274,14 @@
       <strong>Passo 2:</strong> Abra o app e toque em <em>Adicionar Conta</em>, selecionando <em>Conta Corporativa ou Escolar</em>. Permita o acesso à câmera para escanear o QR Code.
     </div>
     <div class="step">
-      <strong>Passo 3:</strong> No computador, localize o e-mail com o título <strong>"Senha para novo tenant M365"</strong>, que contém a senha temporária a ser alterada no primeiro acesso.
+      <strong>Passo 3:</strong> No computador, localize o e-mail com o título <strong>"Senha para novo tenant M365"</strong>, que contém a senha temporária a ser alterada no primeiro acesso. Este e-mail terá:
+      <ul>
+        <li>Na primeira linha: seu login com o domínio <strong>@meb.email</strong></li>
+        <li>Na segunda linha: sua senha temporária</li>
+      </ul>
     </div>
-    <div class="step">
-      <strong>Passo 4:</strong> Acesse <a href="https://portal.office.com" target="_blank">portal.office.com</a> e utilize seu e-mail (<strong>@meb.email</strong>) e a senha temporária recebida.
+    <div class="step" style="background-color: #ffebee; border-left-color: #f44336;">
+      <strong>Passo 4 - IMPORTANTE:</strong> Acesse <a href="https://portal.office.com" target="_blank">portal.office.com</a> e faça login usando seu endereço de e-mail temporário <strong>@meb.email</strong> (não use os domínios @mebconsultoria.com.br ou @merakipm.com.br ainda). Use a senha temporária recebida por e-mail.
     </div>
     <div class="step">
       <strong>Passo 5:</strong> Quando solicitado, escaneie o QR Code exibido na tela para configurar o Authenticator no app.
@@ -291,8 +303,15 @@
 
   <section class="section" id="dominio">
     <h2>7. Domínio Temporário</h2>
-    <p>Durante o processo, os e-mails foram enviados com o domínio <strong>@meb.email</strong>.</p>
-    <p>Após a conclusão da migração, você voltará a utilizar seu domínio original (<strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>).</p>
+    <p class="important">Durante o processo de migração, você deve usar seu e-mail com o domínio temporário <strong>@meb.email</strong> para realizar o primeiro acesso e configurar sua nova senha.</p>
+    <p>Exemplo: Se seu e-mail atual é <strong>nome@mebconsultoria.com.br</strong>, você receberá um e-mail temporário como <strong>nome@meb.email</strong> contendo a senha temporária.</p>
+    <p><strong>Formato do e-mail com suas credenciais:</strong></p>
+    <div class="step" style="background-color: #e3f2fd; border-left-color: #2196f3;">
+      <strong>Primeira linha:</strong> seu login com domínio @meb.email (ex: nome@meb.email)<br>
+      <strong>Segunda linha:</strong> sua senha temporária
+    </div>
+    <p>Use este endereço <strong>@meb.email</strong> e a senha temporária para o primeiro acesso.</p>
+    <p>Somente após completar a configuração inicial e alterar sua senha, você voltará a utilizar seu domínio original (<strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>).</p>
   </section>
 
   <section class="section" id="prazos">
@@ -300,14 +319,14 @@
     <ul>
       <li class="important">Até 08/04/2025:</li>
       <ul>
-        <li>Realize o primeiro acesso no novo e-mail.</li>
+        <li>Realize o primeiro acesso no novo e-mail usando seu endereço <strong>@meb.email</strong> e a senha temporária recebida.</li>
         <li>Instale e configure o app Microsoft Authenticator.</li>
         <li>Altere sua senha temporária para uma senha definitiva.</li>
       </ul>
       <li class="important">A partir de 09/04/2025:</li>
       <ul>
         <li>Acesse o e-mail via <a href="https://www.office.com/" target="_blank">portal do Microsoft Office 365</a> usando os logins <strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>.</li>
-        <li>Será solicitada a senha definitiva que você configurou (não mais a senha temporária do domínio @meb.email).</li>
+        <li>Será solicitada a senha definitiva que você configurou durante o processo inicial (aquela que você criou após entrar com seu endereço @meb.email).</li>
         <li>O acesso através do domínio temporário @meb.email será desativado.</li>
       </ul>
     </ul>
@@ -319,7 +338,7 @@
       <strong>Passo 1:</strong> Abra o Outlook e vá em <em>Arquivo > Configurações de Conta > Configurações de Conta</em>. Selecione a conta antiga e clique em <strong>Remover</strong>.
     </div>
     <div class="step">
-      <strong>Passo 2:</strong> Clique em <em>Novo</em> para adicionar a nova conta. Insira seu e-mail (<strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>) e a senha (a que você definiu no primeiro acesso).
+      <strong>Passo 2:</strong> Clique em <em>Novo</em> para adicionar a nova conta. Insira seu e-mail (<strong>@mebconsultoria.com.br</strong> ou <strong>@merakipm.com.br</strong>) e a senha definitiva (a que você definiu durante o processo de primeiro acesso com o e-mail @meb.email).
     </div>
     <div class="step">
       <strong>Passo 3:</strong> Siga o assistente para concluir a configuração e aguarde a sincronização dos dados.
